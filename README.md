@@ -2,5 +2,7 @@
 https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
 
 ```
-$ source flask/bin/activate
+$ pipenv --python 3.6
+$ pipenv install --dev
+$ pipenv shell
 ```

@@ -104,3 +104,4 @@ ENV/
 
 flask/
 db_repo/
+Pipfile.lock
