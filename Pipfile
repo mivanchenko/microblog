@@ -8,6 +8,7 @@ Flask-MySQLdb = "*"
 Flask-WTF = "*"
 Flask-SQLAlchemy = "*"
 Flask-Migrate = "*"
+Flask-Login = "*"
 
 [dev-packages]
 
