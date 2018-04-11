@@ -15,7 +15,7 @@ class User(UserMixin, db.Model):
     posts = db.relationship('Post', backref='author', lazy='dynamic')
 
     def __repr__(self):
-        return f'<User {self.username}>'
+        return f'<User {self.username}:{self.email}>'
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

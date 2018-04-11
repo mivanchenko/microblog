@@ -4,24 +4,36 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
+    userhandle = StringField('Username or email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
 
+    def validate_userhandle(self, userhandle):
+        user = User.query.filter_by(username=userhandle.data).first() \
+            or User.query.filter_by(email=userhandle.data).first()
+        if user is None:
+            raise ValidationError('This field is required.')
+
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    username = StringField('Username')
+    email = StringField('Email')
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
 
+    def require_userhandle(self):
+        if not self.username.data and not self.email.data:
+            raise ValidationError('Either Username or Email is required.')
+
     def validate_username(self, username):
+        self.require_userhandle()
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
             raise ValidationError('Please use a different username.')
 
     def validate_email(self, email):
+        self.require_userhandle()
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please use a different email address.')
