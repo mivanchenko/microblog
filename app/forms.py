@@ -16,24 +16,18 @@ class LoginForm(FlaskForm):
             raise ValidationError('This field is required.')
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username')
-    email = StringField('Email')
+    username = StringField('Username', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
 
-    def require_userhandle(self):
-        if not self.username.data and not self.email.data:
-            raise ValidationError('Either Username or Email is required.')
-
     def validate_username(self, username):
-        self.require_userhandle()
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
             raise ValidationError('Please use a different username.')
 
     def validate_email(self, email):
-        self.require_userhandle()
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please use a different email address.')
