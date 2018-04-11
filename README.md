@@ -4,10 +4,10 @@ Based on [this tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tut
 ```
 $ git clone https://github.com/mivanchenko/microblog.git 
 $ cd microblog
-$ pipenv --python 3.6
-$ pipenv install --dev
+$ pipenv --python 3.6  # create virtual environment
+$ pipenv install --dev # install all the deps, including the dev
 $ pipenv shell
-$ flask db init
+(shell) $ flask db init
 (shell) $ flask db migrate -m "Initial migration"
 (shell) $ flask db upgrade
 (shell) $ export FLASK_APP=microblog.py
