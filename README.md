@@ -11,6 +11,7 @@ $ pipenv shell
 (shell) $ flask db migrate -m "Initial migration"
 (shell) $ flask db upgrade
 (shell) $ export FLASK_APP=microblog.py
+(shell) $ export FLASK_DEBUG=1
 (shell) $ flask run
 $ open http://localhost:5000/
 ```
