@@ -12,6 +12,15 @@ $ pipenv shell
 (shell) $ flask db upgrade
 (shell) $ export FLASK_APP=microblog.py
 (shell) $ export FLASK_DEBUG=1
+
+	# for email functionality:
+	(shell) $ export MAIL_SERVER=localhost
+	(shell) $ export MAIL_PORT=8025
+
+	# in a separate terminal:
+	$ pipenv shell
+	(shell) $ python -m smtpd -n -c DebuggingServer localhost:8025
+
 (shell) $ flask run
 $ open http://localhost:5000/
 ```
