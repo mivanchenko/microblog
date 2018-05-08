@@ -10,6 +10,7 @@ Flask-Migrate    = "*"
 Flask-MySQLdb    = "*"
 Flask-SQLAlchemy = "*"
 Flask-WTF        = "*"
+Flask-Bootstrap  = "*"
 
 pyjwt = "*"
 
