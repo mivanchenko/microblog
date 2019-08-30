@@ -5,7 +5,7 @@ Based on [this tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tut
 $ git clone https://github.com/mivanchenko/microblog.git 
 $ cd microblog
 $ brew install pipenv
-$ pipenv --python 3.6  # create virtual environment
+$ pipenv --python 3.7  # create virtual environment
 $ pipenv install --dev # install all the deps, including the dev
 $ pipenv shell
 (shell) $ flask db init
